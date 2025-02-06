@@ -4,6 +4,7 @@ const { ccclass, property } = _decorator;
 export default class Message {
    
     type:number;
+    data:any;
 
     
 
