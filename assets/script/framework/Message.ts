@@ -1,14 +1,13 @@
 import { _decorator, Component, Node } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('Message')
-export class Message extends Component {
-    start() {
+export default class Message {
+   
+    type:number;
 
-    }
+    
 
-    update(deltaTime: number) {
-        
-    }
+
 }
-
+
+
