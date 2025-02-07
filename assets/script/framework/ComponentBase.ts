@@ -3,12 +3,11 @@ const { ccclass, property } = _decorator;
 
 @ccclass('ComponentBase')
 export class ComponentBase extends Component {
-    start() {
 
-    }
-
-    update(deltaTime: number) {
+    public receiveMessage(message: any) {
         
     }
+
 }
-
+
+
