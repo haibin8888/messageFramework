@@ -17,7 +17,7 @@ export default class Message {
 
 }
 
-export class MessageManager {
+export class MessageType {
     
     static Type_UI = 1;
     static UI_RefreshHp = 101;

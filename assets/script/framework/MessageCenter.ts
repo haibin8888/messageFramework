@@ -1,32 +1,23 @@
 import { _decorator, Component, Node } from 'cc';
 import { ComponentBase } from './ComponentBase';
 import { ManageBase } from './ManageBase';
+import Message from './Message';
 const { ccclass, property } = _decorator;
 
-@ccclass('MessageCenter')
+@ccclass
 export class MessageCenter extends ComponentBase {
   
+
     // 管理类集合
-    private static manageList:ManageBase[] = [];
-
-    // 单例
-    private static _instance: MessageCenter = null;
-
-    // 必须用这个获取单例
-    public static getInstance() {
-        if (MessageCenter._instance == null) {
-            MessageCenter._instance = new MessageCenter();
-        }
-        return MessageCenter._instance;
-    }
+    public  static manageList:any[] = [];
 
 
     // 注册管理类
-    public static registerManage(manage:ManageBase){
-        if(manage == null){
+    public static registerManage(ManageBase){
+        if(ManageBase == null){
             return;
         }
-        this.manageList.push(manage);
+        this.manageList.push(ManageBase);
     }
 
     // 移除管理类
@@ -38,6 +29,26 @@ export class MessageCenter extends ComponentBase {
         if(index != -1){
             this.manageList.splice(index,1);
         }
+    }
+
+    
+
+
+    // 发送消息
+    public static sendMessage(msg:Message){
+
+        for(const manage of MessageCenter.manageList){
+
+            if(manage.manageType == msg.type){
+                manage.receiveMessage(msg);
+            }
+        
+    }
+
+
+
+
+
     }
 
 
